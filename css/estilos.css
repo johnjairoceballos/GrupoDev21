@@ -15,7 +15,7 @@
 
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url("../img/fondo.jpg");
+    background-image: url("../img/fondo3.jpg");
 }
 
 .form-login{
@@ -64,6 +64,14 @@ body{
 .buttons:hover{
     background: var(--blanco);
     color: var(--rojo);
+    cursor: pointer;
+}
+
+.buttons:active{
+    width: 99%;
+    height: 39px;
+    background: var(--rojo);
+    color: var(--blanco);
 }
 
 
