@@ -4,6 +4,14 @@
 --negro:#252323;
 --sombra:#000;
 --blanco:#FFF;
+
+/* var para menu */
+--width: 300px;
+--padding: 10px;
+--bgcolor: var(--gris);
+--hovercolor:var(--rojo);
+--width-collapsed: 50px;
+
 }
 
 
@@ -16,6 +24,8 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-image: url("../img/fondo3.jpg");
+    margin-left: var(--width-collapsed);
+    
 }
 
 .form-login{
@@ -95,3 +105,18 @@ body{
 .logo{
     margin-top: 100px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
