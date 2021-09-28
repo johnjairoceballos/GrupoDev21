@@ -52,7 +52,39 @@
     font-size: 20px;
 }
 
+.controls{
+    width: 100%;
+    border: 1px solid var(--rojo);
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: var(--negro);
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+}
 
+.btn-primary {
+    width: 100%;
+    height: 40px;
+    background: var(--rojo) !important ;
+    border: none;
+    color: white;
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    width: 100%;
+    height: 40px;
+    background: var(--blanco) !important;
+    border: none;
+    color:var(--rojo) !important;
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 16px;
+
+}
 
 /* este media query permite identificar al navegador el alto de la pantalla
 y le dice que si la pantalla es mayor de 900 pixeles entonces el campo
