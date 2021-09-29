@@ -8,7 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/general.css" />
     <link rel="stylesheet" href="css/menu.css" />
+    <link rel="stylesheet" href="css/ventas.css" />
     <link rel="icon" href="img/logo8.png" type="image/png" />
+    <script type="text/javascript" src="js/venta.js"></script>
   </head>
    <body>
     <form>
@@ -76,9 +78,41 @@
       </div>
     </form>
     <!-- Dentro de este section va todos los componentes del formulario -->
-    <section class="form-general">
+   
+      <section class="form-general">
+      <div class="container">
+        <div class="row">
+          <div class="tittle col-sm-7"><h4>LISTADO DE PRODUCTOS</h4></div>
+          <!--<div class="tittle col-sm-4"><h4>LISTADO DE PRODUCTOS</h4></div>-->
+        </div>
+          
+          <div class="row">
+            <!-- Elementos generados a partir del JSON-->
+              <main id="itemsw" class="col-sm-8 row">
+
+              </main>
+              <!--carrito-->
+              <aside class="col-sm-4">
+                <h2>Carrito de Compra</h2>
+                <!--Elementos del carrito-->
+                <ul id="carrito" class="list-group"></ul>
+                <hr>
+                <!--Precio total-->
+                <p class="text-right">Total:<span id="total"></span>$Pesos;</p>
+                <button id="boton-guardar" class="btn btn-success">Comprar</button>
+                <button id="boton-vaciar" class="btn btn-danger">Limpiar</button>
+              </aside>
+          </div>
+      </div>
+    </section>
+<script type="text/javascript" src="js/menu.js"></script>
+  </body>
+</html>
+
+    
+    
 <!-- espacio de trabajo del formulario -->
-     <form>
+     <!--<form>
         <h5>Gestión de Usuarios</h5>
         <br>
         <div class="container">
@@ -130,9 +164,11 @@
           </div>
           </div>
         </div> 
+     
       </form>
+
     </section>
 
     <script type="text/javascript" src="js/menu.js"></script>
   </body>
-</html>
+</html>-->
