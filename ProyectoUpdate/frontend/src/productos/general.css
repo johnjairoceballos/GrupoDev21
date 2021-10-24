@@ -86,28 +86,6 @@
 
 }
 
-table {
-    width: 900px; /* 140px * 5 column + 16px scrollbar width */
-    border-spacing: 0;
-}
-
-tbody, thead tr { display: block; }
-
-tbody {
-    height: 100px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-tbody td, thead th {
-    width: 150px;
-}
-
-thead th:last-child {
-    width: 150px; /* 140px + 16px scrollbar width */
-}
-
-
 /* este media query permite identificar al navegador el alto de la pantalla
 y le dice que si la pantalla es mayor de 900 pixeles entonces el campo
 del form-general que es la cajita gris sea de 45rem si es menor de 900px pero 
@@ -125,10 +103,3 @@ mayor de 700px entonces la cajita gris queda de 35rem */
         height: 45rem;
     }
 }
-
-
-
-
-
-
-
