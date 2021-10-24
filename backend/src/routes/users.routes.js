@@ -1,5 +1,5 @@
 const {Router}=require('express');
-const { getUsers, getUser, createUser, updateUser, deleteUser } = require('../controllers/users.controllers');
+const { getUsers, getUser, createUser, updateUser, deleteUser, getCorreo } = require('../controllers/users.controllers');
 const router = Router()
 const UsersCtrl = require('../controllers/users.controllers')
 
@@ -25,6 +25,9 @@ router.route('/:id')
 //      .post()
 //      .put((req,res)=> res.json({message: 'Nota updated'}))
 //      .delete((req,res)=> res.json({message: 'Nota Deleted'}))
+
+router.route('/correo/:email')
+    .get(getCorreo);
 
 
 

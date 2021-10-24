@@ -54,4 +54,15 @@ UsersCtrl.createUser =  async (req,res)=> {
     });
  }
 
+ UsersCtrl.getCorreo = async (req,res)=>{
+     console.log(req.params.email);
+     const user = await User.find({email : req.params.email});
+     
+    res.json({
+        user,
+        mensaje : 'Usuario encontrado'
+    })
+    
+}
+
 module.exports = UsersCtrl

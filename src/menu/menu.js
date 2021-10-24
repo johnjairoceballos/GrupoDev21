@@ -3,11 +3,16 @@ import "./menu.css";
 import { Link } from "react-router-dom";
 
 class Menu extends Component {
+
+  
   state = {
     isSwitchOn: false,
   };
 
+
+
   render() {
+    
     console.log(this.state.isSwitchOn);
     return (
       <main>
@@ -40,14 +45,14 @@ class Menu extends Component {
                 <img src="img/logo7.png" alt="" />
               </div>
               <div id="name">
-                <span>Usuario</span>
+                <span>{sessionStorage.getItem('nombre')}</span>
               </div>
             </div>
 
             {/* <!-- items --> */}
             <div className="menu-items">
               <div className="item">
-                <Link to="/">
+                <Link to="/productos">
                   <div className="icon">
                     <img src="../img/iconos/producto2.png" alt="" />
                   </div>
@@ -69,14 +74,14 @@ class Menu extends Component {
 
               <div className="menu-items">
                 <div className="item">
-                  <a>
+                  <Link to="ventas">
                     <div className="icon">
                       <img src="img/iconos/ventas2.png" alt="" />
                     </div>
                     <div className="title">
                       <span>Ventas</span>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -84,14 +89,14 @@ class Menu extends Component {
 
               <div className="menu-items">
                 <div className="item">
-                  <a>
+                  <Link to="/usuarios">
                     <div className="icon">
                       <img src="img/iconos/usuario2.png" alt="" />
                     </div>
                     <div className="title">
                       <span>Usuarios</span>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
