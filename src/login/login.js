@@ -20,14 +20,15 @@ function Login(props) {
 
 
   const repuestaGoogle = async (respuesta) => {
-    // debugger;
+     debugger;
     console.log(respuesta);
     console.log(respuesta.profileObj);
 
 
     const email = respuesta.profileObj.email;
     const res = await axios.get("http://localhost:3001/api/v1/user/email/" + email);
-    if (res.data.length === 0) {
+    console.log("corr " + res.data);
+    if (res.data.user.length === 0) {
       setIsLoggedIn(false);
       Swal.fire({
         icon: 'error',

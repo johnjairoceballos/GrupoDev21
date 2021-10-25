@@ -7,12 +7,12 @@ import Menu from "./../menu/menu";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import Swal from 'sweetalert2'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Usuarios extends Component {
   state = {
     users: [],
-    id_user : "",
+    id_user: "",
     username: "",
     userlastname: "",
     email: "",
@@ -26,7 +26,7 @@ class Usuarios extends Component {
     const res = await axios.get("http://localhost:3001/api/v1/user/list");
     this.setState({ users: res.data.users });
     // console.log("users" + JSON.stringify(res));
-    
+
   };
 
   async componentDidMount() {
@@ -76,36 +76,46 @@ class Usuarios extends Component {
 
   onSubmit = async (e) => {
     e.preventDefault();
-    this.verificarCorreo(this.email);
-    const res = await axios.post("http://localhost:3001/api/v1/user/add", {
-      id_user: this.state.id_user,
-      username: this.state.username,
-      userlastname: this.state.userlastname,
-      email: this.state.email,
-      rol: this.state.rol,
-      estado: this.state.estado,
-    });
-    
-    console.log(res);
-    this.getUsers();
-    this.setState({
-      username: "",
-      userlastname: "",
-      email: "",
-      rol: "0",
-      estado: "0",
-      id_user: "",
-    });
+    // this.verificarCorreo(this.email);
+    if (this.verificarCorreo(this.email)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'El correo ya esta registrado',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    } else {
 
-    const mensaje = res.data.mensaje;
-    Swal.fire({
-          // position: 'top-end',
-          icon: 'success',
-          title: mensaje,
-          showConfirmButton: false,
-          timer: 1500
-        })
-    // alert(mensaje);
+      const res = await axios.post("http://localhost:3001/api/v1/user/add", {
+        id_user: this.state.id_user,
+        username: this.state.username,
+        userlastname: this.state.userlastname,
+        email: this.state.email,
+        rol: this.state.rol,
+        estado: this.state.estado,
+      });
+
+      console.log(res);
+      this.getUsers();
+      this.setState({
+        username: "",
+        userlastname: "",
+        email: "",
+        rol: "0",
+        estado: "0",
+        id_user: "",
+      });
+
+      const mensaje = res.data.mensaje;
+      Swal.fire({
+        // position: 'top-end',
+        icon: 'success',
+        title: mensaje,
+        showConfirmButton: false,
+        timer: 1500
+      })
+      // alert(mensaje);
+    }
   };
 
   deleteUser = async (id) => {
@@ -115,7 +125,7 @@ class Usuarios extends Component {
     // const mensaje = res.data.mensaje;
   };
 
-  confimarDelete(id){
+  confimarDelete(id) {
     Swal.fire({
       title: 'Esta Seguro!!',
       text: "¿Quiere eliminar este usuario?",
@@ -136,7 +146,7 @@ class Usuarios extends Component {
     })
   }
 
-  getUser = async (id) =>{
+  getUser = async (id) => {
     const res = await axios.get("http://localhost:3001/api/v1/user/" + id);
     console.log("usuario " + JSON.stringify(res));
     this.setState({
@@ -149,24 +159,24 @@ class Usuarios extends Component {
       estado: res.data.user.estado,
       isUpdate: true
     });
-  console.log("isUp " + this.state.isUpdate);
+    console.log("isUp " + this.state.isUpdate);
   }
 
-  updateUser= async (id) =>{
-     const res = await axios.put("http://localhost:3001/api/v1/user/update" , {
-        _id:id,
-        id_user: this.state.id_user,
-        username: this.state.username,
-        userlastname: this.state.userlastname,
-        email: this.state.email,
-        rol: this.state.rol,
-        estado: this.state.estado,
-     });
+  updateUser = async (id) => {
+    const res = await axios.put("http://localhost:3001/api/v1/user/update", {
+      _id: id,
+      id_user: this.state.id_user,
+      username: this.state.username,
+      userlastname: this.state.userlastname,
+      email: this.state.email,
+      rol: this.state.rol,
+      estado: this.state.estado,
+    });
     //  this.getUsers();
     console.log(res.data.mensaje);
   }
 
-  confirmUpdate = async (id)=>{
+  confirmUpdate = async (id) => {
     Swal.fire({
       icon: 'success',
       title: 'Usuario Actualizado',
@@ -176,7 +186,7 @@ class Usuarios extends Component {
     this.updateUser(id);
     this.getUsers();
     this.setState({
-      id_user:"",
+      id_user: "",
       username: "",
       userlastname: "",
       email: "",
@@ -186,10 +196,13 @@ class Usuarios extends Component {
     });
   }
 
-  verificarCorreo = async (correo) =>{
+  verificarCorreo = async (correo) => {
     const res = await axios.get("http://localhost:3001/api/v1/user/email/" + correo)
-    if (res.data.user.email === this.state.email){
-      alert('correo ya existe');
+    if (res.data.user.email === this.state.email) {
+      // alert('correo ya existe');
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -201,7 +214,7 @@ class Usuarios extends Component {
           <h5>Gestión de Usuarios</h5>
           <br />
           <div className="container">
-          <div className="row">
+            <div className="row">
               <div className="col-md-3">
                 <output>Cedula:</output>
               </div>
@@ -292,19 +305,19 @@ class Usuarios extends Component {
             <br />
             <div className="row">
               <div className="col-md-4 offset-md-4">
-                {this.state.isUpdate  
-                  ?  <button type="submit" className="btn btn-primary"                                           
-                                          onClick={() => this.confirmUpdate(this.state._id)}>
-                            Actualizar
-                   </button>
+                {this.state.isUpdate
+                  ? <button type="submit" className="btn btn-primary"
+                    onClick={() => this.confirmUpdate(this.state._id)}>
+                    Actualizar
+                  </button>
                   : <button type="submit" className="btn btn-primary">
-                  Guardar
-                </button>} 
+                    Guardar
+                  </button>}
               </div>
             </div>
-          
+
             <div className="row">
-            
+
               <div className="col-md-12">
                 <Table striped bordered hover variant="dark" responsive>
                   <thead>
@@ -326,25 +339,25 @@ class Usuarios extends Component {
                         <td >{user.username}</td>
                         <td >{user.userlastname}</td>
                         <td >{user.email}</td>
-                        <td >{user.rol === "1" ? 'Administrador' : 'Vendedor' }</td>
+                        <td >{user.rol === "1" ? 'Administrador' : 'Vendedor'}</td>
                         <td >{user.estado === "1" ? 'Activo' : 'Inactivo'}</td>
                         <td>
                           {/* <Link  className="btn btn-primary" to={"/edit/"+ user._id}>
                           </Link> */}
-                          <button type="submit" className="btn btn-warning" onClick={()=> this.getUser(user._id)} >
+                          <button type="submit" className="btn btn-warning" onClick={() => this.getUser(user._id)} >
                             Editar
-                          </button> 
-                                    
+                          </button>
+
                         </td>
                         <td>
-                        <button type="submit" className="btn btn-danger"                                           
-                                          onClick={() => this.confimarDelete(user._id)}>
+                          <button type="submit" className="btn btn-danger"
+                            onClick={() => this.confimarDelete(user._id)}>
                             Eliminar
-                          </button>             
+                          </button>
                         </td>
                       </tr>
-                    ))}                 
-                  
+                    ))}
+
                   </tbody>
                 </Table>
               </div>
