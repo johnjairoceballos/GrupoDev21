@@ -45,14 +45,32 @@ updateUser = async (req, res) => {
 }
 
 
-getCorreo = async (req,res)=>{
-    console.log(req.params.email);
-    const user = await user_model.find({email : req.params.email});
-    
-   res.json({
-       user,
-       mensaje : 'Usuario encontrado'
-   })
+// getCorreo = async (req,res)=>{
+//     console.log(req.params.email);
+//     const user = await user_model.find({email : req.params.email});
+//     if(error) return res.status(500).json({error:true, mensaje: error});
+//     res.json({
+//         user,
+//         mensaje : 'Usuario encontrado'
+//     })
+  
+// }
+
+getCorreo = async  (req,res)=>{
+     await user_model.find({email : req.params.email}).exec((error, user) => {
+    if(error) return res.status(500).json({error:true, mensaje: error});
+    console.log(user);
+    if(!user.length){
+        res.json({
+            user: "no",
+            mensaje : 'Usuario no encontrado'
+        })
+    }else{ res.json({
+        user,
+        mensaje : 'Usuario encontrado'
+    })}
+   
+})
 }
 
 module.exports = Object.freeze({

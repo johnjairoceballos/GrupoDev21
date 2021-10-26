@@ -77,7 +77,10 @@ class Usuarios extends Component {
   onSubmit = async (e) => {
     e.preventDefault();
     // this.verificarCorreo(this.email);
-    if (this.verificarCorreo(this.email)) {
+    debugger;
+    const res = await axios.get("http://localhost:3001/api/v1/user/email/" + this.state.email)
+    if (res.data.user !== "no"){
+    // if (this.verificarCorreo(this.state.email)) {
       Swal.fire({
         icon: 'error',
         title: 'El correo ya esta registrado',
