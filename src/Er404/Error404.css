@@ -1,0 +1,15 @@
+.form-404{
+    width: 900px;
+    height: 500px;
+    background: var(--gris);
+    margin: auto;
+    margin-top: 180px;
+    box-shadow:7px 13px 37px var(--sombra) ;
+    padding: 20px 30px;
+    border-top: 4px solid #ee523d;
+    color: var(--blanco);
+}
+
+.rowError{
+    height: 400px;
+}

@@ -1,16 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "./menu.css";
 import { Link } from "react-router-dom";
 
+
+
 class Menu extends Component {
 
-  
   state = {
     isSwitchOn: false,
+    rol : sessionStorage.getItem('rol')
+    
   };
-
-
-
+    
   render() {
     
     console.log(this.state.isSwitchOn);
@@ -67,7 +68,7 @@ class Menu extends Component {
 
               <div className="menu-items">
                 <div className="item">
-                  <Link to="ventas">
+                  <Link to="/ventas">
                     <div className="icon">
                       <img src="img/iconos/ventas2.png" alt="" />
                     </div>
@@ -79,7 +80,8 @@ class Menu extends Component {
               </div>
 
               <div className="item separator"></div>
-
+              
+               {sessionStorage.getItem('rol') === "1" && (
               <div className="menu-items">
                 <div className="item">
                   <Link to="/usuarios">
@@ -92,6 +94,7 @@ class Menu extends Component {
                   </Link>
                 </div>
               </div>
+               )}
 
               <div className="item separator"></div>
 

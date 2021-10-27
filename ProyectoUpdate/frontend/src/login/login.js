@@ -6,7 +6,8 @@ import Bienvenida from "../bienvenida/bienvenida";
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { alignPropType } from "react-bootstrap/esm/types";
-
+import { AuthContext } from "../auth/AuthProvider";
+import useAuth from "../auth/useAuth";
 
 
 
@@ -14,20 +15,20 @@ function Login(props) {
 
   let [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const divStyle = {
-    align: 'center',  
-  };
-
-
+  const auth = useAuth();
   const repuestaGoogle = async (respuesta) => {
-     debugger;
+    //  debugger;
     console.log(respuesta);
     console.log(respuesta.profileObj);
+    
+    auth.login();
 
 
     const email = respuesta.profileObj.email;
     const res = await axios.get("http://localhost:3001/api/v1/user/email/" + email);
     console.log("corr " + res.data);
+    // const rol = res.data.user[0].rol;
+    sessionStorage.setItem('rol', res.data.user[0].rol);
     if (res.data.user.length === 0) {
       setIsLoggedIn(false);
       Swal.fire({
@@ -47,16 +48,20 @@ function Login(props) {
       })
       const nombre = respuesta.profileObj.name;
       const token = respuesta.profileObj.token;
-      console.log(res.json);
+      
+      // console.log("rol "+ rol);
 
       console.log(nombre);
       sessionStorage.setItem('nombre', nombre);
       sessionStorage.setItem('token' ,  token );
-      // sessionStorage.setItem('rol', rol);
+      
+
+      const rrr = sessionStorage.getItem('rol');
+      console.log("rrr " + rrr);
 
     }
   }
-
+  
   const respuestaFallidaGoogle = (respuesta) => {
     console.error(respuesta)
   }
@@ -83,7 +88,7 @@ function Login(props) {
                   class="controls" type="password" name="contrasena" value="" placeholder=" Contraseña" />
               </div>
               <input
-                class="buttons" type="submit" name="" value="   Ingresar" />
+                class="buttons" type="submit" name="" value=" Ingresar" />
               <p><a href="#">¿Olvidaste tu contraseña?</a></p>
               <div className="offset-md-3">
                 <GoogleLogin
@@ -110,5 +115,7 @@ function Login(props) {
 
 
 }
+
+
 
 export default Login;
