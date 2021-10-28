@@ -322,8 +322,8 @@ class Usuarios extends Component {
             <div className="row">
 
               <div className="col-md-12">
-                <Table striped bordered hover variant="dark" responsive>
-                  <thead>
+                <Table striped bordered hover variant="dark" className="tableUser" responsive>
+                  <thead className="theadUser">
                     <tr>
                       <th>Cedula</th>
                       <th>Nombres</th>
@@ -335,7 +335,7 @@ class Usuarios extends Component {
                       <th>Eliminar</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="tbodyUser">
                     {this.state.users.map((user) => (
                       <tr key={user._id}>
                         <td>{user.id_user}</td>

@@ -20,6 +20,7 @@ function App() {
       <AuthProvider>
         <AppRouter></AppRouter>
       </AuthProvider>
+   
 
       <div className="App">
 
