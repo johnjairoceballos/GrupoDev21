@@ -75,7 +75,7 @@ class Usuarios extends Component {
   };
 
   onSubmit = async (e) => {
-    e.preventDefault();
+     e.preventDefault();
     // this.verificarCorreo(this.email);
     debugger;
     const res = await axios.get("http://localhost:3001/api/v1/user/email/" + this.state.email)
