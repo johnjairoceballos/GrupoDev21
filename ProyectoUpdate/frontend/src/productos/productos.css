@@ -1,6 +1,7 @@
 :root {
     --rojo: #ee523d;
     --gris: #4e4d4d;
+    --gris-claro: #737577;
     --negro: #252323;
     --sombra: #000;
     --blanco: #fff;
@@ -36,3 +37,20 @@
     color: var(--blanco) !important;
   }
   
+  .product{
+    background-color: var(--gris-claro) !important; 
+  }
+
+  h1{
+    color: var(--rojo);
+  }
+
+  
+  .cabecera_table{
+color:burlywood;
+  }
+
+  .update-products{
+    color:burlywood;
+    size: 25px;
+  }

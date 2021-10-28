@@ -86,27 +86,11 @@
 
 }
 
-.tableUser {
-    width: 900px; /* 140px * 5 column + 16px scrollbar width */
-    border-spacing: 0;
+
+.table1{
+    background-color:#FFF;
+    height: 900px
 }
-
-.tableUser , .tbodyUser , .theadUser tr { display: block; }
-
-.tableUser .tbodyUser {
-    height: 100px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.tableUser .tbody td, .theadUser th {
-    width: 150px;
-}
-
-.tableUser .thead th:last-child {
-    width: 150px; /* 140px + 16px scrollbar width */
-}
-
 
 /* este media query permite identificar al navegador el alto de la pantalla
 y le dice que si la pantalla es mayor de 900 pixeles entonces el campo
@@ -132,3 +116,20 @@ mayor de 700px entonces la cajita gris queda de 35rem */
 
 
 
+
+
+h1{
+    text-align: center;
+    background-color: aliceblue;
+    border-top-right-radius: 18rem;
+    border-bottom-left-radius: 18rem;
+}
+
+.contenedor{
+    background-color:rgb(149, 150, 151);
+    height: 800px;
+}
+
+.mensaje4{
+    background-color: yellow;
+}

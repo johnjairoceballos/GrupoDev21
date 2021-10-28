@@ -1,0 +1,15 @@
+h1{
+    text-align: center;
+    background-color: aliceblue;
+    border-top-right-radius: 18rem;
+    border-bottom-left-radius: 18rem;
+}
+
+.contenedor{
+    background-color:rgb(149, 150, 151);
+    height: 800px;
+}
+
+.mensaje4{
+    background-color: yellow;
+}
